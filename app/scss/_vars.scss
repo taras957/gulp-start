@@ -1,25 +1,22 @@
-// MEDIA queries
 
-// 0-600px: Phone
-// 600-900: Taablet
-// 1200-1800 normal style
-// 1800 ++ desctop
-/*
-$breackpoint argument choices:
- - phone
- - tab-portrait
- - tab- land
- -desktop
-
- 1em ==16px
- */
- @mixin respond($breackpoint) {
-     @if $breackpoint == phone{
-         @media(max-width: 37.5em) {@content}}; //600px
-     @if $breackpoint == tab-portrait{
-         @media(max-width: 56.25em) {@content}}; //900px
-     @if $breackpoint == land{
-         @media(max-width: 75em) {@content}}; //1200px
-     @if $breackpoint == deskctop{
-         @media(min-width: 112.5em) {@content}}; //1800px
- }
+ .visually-hidden {
+  /* Удаляем элемент из потока документа */
+  position: absolute;
+  /* Временное решение для неверно произносимого, размазанного текста */
+  white-space: nowrap;
+  /* Устанавливаем минимально возможный размер (некоторые скринридеры игнорируют элементы с нулевой высотой и шириной) */
+  width: 1px;
+  height: 1px;
+  /* Скрываем вылезающий за границы контент */
+  overflow: hidden;
+  /* Сбрасываем любые свойства, которые могут повлиять на размер элемента */
+  border: 0;
+  padding: 0;
+  /* Вырезаем ту часть контента, которая должна отображаться. */
+  /* Устаревшее свойство clip для старых браузеров */
+  clip: rect(0 0 0 0);
+  /* clip-path для новых браузеров. inset(50%) определяет область вставки, которая позволит контенту исчезнуть.  */
+  clip-path: inset(50%); 
+    /* Похоже, никто до конца не понимает, почему тут margin: -1px. Кроме того, это приводит к проблемам (читай: https://github.com/h5bp/html5-boilerplate/issues/1985). */
+  margin: -1px;
+}
